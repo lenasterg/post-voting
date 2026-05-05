@@ -71,11 +71,19 @@ Wdpv_PluginsHandler::init();
 
 // Widgets
 require_once WDPV_PLUGIN_BASE_DIR . '/lib/class_wpdv_widget_voting.php';
-add_action('widgets_init', create_function('', "register_widget('Wdpv_WidgetVoting');"));
+add_action('widgets_init', function() {
+    register_widget('Wdpv_WidgetVoting');
+});
+
 require_once WDPV_PLUGIN_BASE_DIR . '/lib/class_wpdv_widget_popular.php';
-add_action('widgets_init', create_function('', "register_widget('Wdpv_WidgetPopular');"));
+add_action('widgets_init', function() {
+    register_widget('Wdpv_WidgetPopular');
+});
+
 require_once WDPV_PLUGIN_BASE_DIR . '/lib/class_wpdv_widget_network_popular.php';
-add_action('widgets_init', create_function('', "register_widget('Wdpv_WidgetNetworkPopular');"));
+add_action('widgets_init', function() {
+    register_widget('Wdpv_WidgetNetworkPopular');
+});
 
 
 if (is_admin()) {
