@@ -50,11 +50,16 @@ if (is_multisite() && defined('WPMU_PLUGIN_URL') && defined('WPMU_PLUGIN_DIR') &
 	// No point in trying to add textdomain to string and/or localizing it.
 	wp_die(__('There was an issue determining where Post Voting plugin is installed. Please reinstall.'));
 }
-$textdomain_handler('wdpv', false, WDPV_PLUGIN_SELF_DIRNAME . '/languages/');
 
-global $wpmudev_notices;
-$wpmudev_notices[] = array( 'id'=> 231, 'name'=> 'Post Voting', 'screens' => array( 'settings_page_wdpv-network', 'settings_page_wdpv' ) );
-if (file_exists(WDPV_PLUGIN_BASE_DIR . '/lib/externals/wpmudev-dash-notification.php')) require_once WDPV_PLUGIN_BASE_DIR . '/lib/externals/wpmudev-dash-notification.php';
+add_action('init', function () use ($textdomain_handler) {
+    $textdomain_handler(
+        'wdpv',
+        false,
+        WDPV_PLUGIN_SELF_DIRNAME . '/languages/'
+    );
+});
+
+
 
 
 require_once WDPV_PLUGIN_BASE_DIR . '/lib/class_wdpv_installer.php';
