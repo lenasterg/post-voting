@@ -3,9 +3,8 @@
  * Shows list of posts with highest number of votes on current blog.
  */
 class Wdpv_WidgetPopular extends WP_Widget {
-
-	function Wdpv_WidgetPopular () {
-		$widget_ops = array('classname' => __CLASS__, 'description' => __('Shows list of posts with highest number of votes on current blog.', 'wdpv'));
+	public function __construct() {
+  		$widget_ops = array('classname' => __CLASS__, 'description' => __('Shows list of posts with highest number of votes on current blog.', 'wdpv'));
 		parent::__construct(__CLASS__, __('Top voted Posts', 'wdvp'), $widget_ops);
 	}
 
